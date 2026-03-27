@@ -1,0 +1,14 @@
+{
+  "name": "Калькулятор Девелопера — Деньги в Квадрате",
+  "short_name": "Калькулятор",
+  "description": "Расчёт эффективности инвестиций в коммерческую недвижимость",
+  "start_url": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#FDFAF8",
+  "theme_color": "#A84455",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}
