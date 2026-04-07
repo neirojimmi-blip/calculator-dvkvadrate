@@ -386,41 +386,46 @@ input[type="range"]::-webkit-slider-thumb:hover {
   position: absolute;
   inset: 0;
   z-index: 50;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  background: rgba(255,255,255,0.45);
+  background: rgba(255,255,255,0.4);
   border-radius: 14px;
-  gap: 16px;
-  pointer-events: auto;
+  pointer-events: none;
 }
-.demo-blur-overlay-text {
+.demo-cta-bar {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  z-index: 999;
+  background: var(--white);
+  border-top: 3px solid var(--rose);
+  box-shadow: 0 -4px 24px rgba(177,17,22,0.15);
+  padding: 20px 36px;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+.demo-cta-features {
+  flex: 1;
+}
+.demo-cta-title {
   font-family: 'Playfair Display', serif;
-  font-size: 22px;
-  font-weight: 700;
-  color: var(--text);
-  letter-spacing: 0.3px;
-  text-align: center;
-  text-shadow: 0 1px 4px rgba(255,255,255,0.8);
+  font-size: 16px; font-weight: 700; color: var(--rose);
+  margin-bottom: 6px;
 }
-.demo-blur-overlay-sub {
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--text-mid);
-  text-align: center;
-  max-width: 320px;
-  line-height: 1.5;
+.demo-cta-list {
+  display: flex; flex-wrap: wrap; gap: 6px 16px;
+  list-style: none; font-size: 12px; font-weight: 600; color: var(--text-mid);
+}
+.demo-cta-list li::before {
+  content: '✓ '; color: var(--green); font-weight: 800;
 }
 .demo-cta-btn {
   display: inline-block;
-  padding: 16px 48px;
+  padding: 16px 40px;
   background: var(--rose);
   color: #fff;
   font-family: 'Nunito Sans', sans-serif;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 800;
   letter-spacing: 1px;
   text-transform: uppercase;
@@ -428,16 +433,23 @@ input[type="range"]::-webkit-slider-thumb:hover {
   border-radius: 12px;
   border: none;
   cursor: pointer;
-  box-shadow: 0 6px 24px rgba(177,17,22,0.35), 0 2px 8px rgba(177,17,22,0.2);
+  white-space: nowrap;
+  flex-shrink: 0;
+  box-shadow: 0 6px 24px rgba(177,17,22,0.35);
   transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
 }
 .demo-cta-btn:hover {
   background: var(--rose-light);
   transform: translateY(-2px);
-  box-shadow: 0 10px 32px rgba(177,17,22,0.4), 0 4px 12px rgba(177,17,22,0.25);
+  box-shadow: 0 10px 32px rgba(177,17,22,0.4);
 }
-.demo-cta-btn:active {
-  transform: translateY(0);
+@media(max-width:800px){
+  .demo-cta-bar { flex-direction: column; gap: 12px; padding: 16px; text-align: center; }
+  .demo-cta-list { justify-content: center; }
+  .content { padding-bottom: 180px !important; }
+}
+@media(min-width:801px){
+  .content { padding-bottom: 120px !important; }
 }
 /* Hide warning in demo */
 .warning { display: none !important; }
@@ -464,9 +476,9 @@ input[type="range"]::-webkit-slider-thumb:hover {
 </div>
 <div class="demo-blur-wrap">
 <div class="demo-blur-overlay" style="border-radius:0;">
-  <div class="demo-blur-overlay-text">Сравнение вариантов</div>
-  <div class="demo-blur-overlay-sub">Сравнительный анализ всех вариантов инвестиций с графиками и таблицами</div>
-  <a href="#payment" class="demo-cta-btn">Получить полную версию</a>
+  
+  
+  
 </div>
 <div class="compare-panel" id="compare-panel" style="display:none;">
   <div class="compare-header">
@@ -763,9 +775,9 @@ input[type="range"]::-webkit-slider-thumb:hover {
 
     <div class="demo-blur-wrap">
     <div class="demo-blur-overlay">
-      <div class="demo-blur-overlay-text">Ключевые показатели</div>
-      <div class="demo-blur-overlay-sub">Получите доступ к полному расчёту рентабельности, NPV, окупаемости и доходности</div>
-      <a href="#payment" class="demo-cta-btn">Получить полную версию</a>
+      
+      
+      
     </div>
     <div class="kpi-row">
       <div class="kpi st-rose" id="kpi-roe">
@@ -800,8 +812,8 @@ input[type="range"]::-webkit-slider-thumb:hover {
 
     <div class="demo-blur-wrap">
     <div class="demo-blur-overlay">
-      <div class="demo-blur-overlay-text">Финансовая сводка</div>
-      <a href="#payment" class="demo-cta-btn">Получить полную версию</a>
+      
+      
     </div>
     <div class="strip">
       <div class="strip-item">
@@ -825,9 +837,9 @@ input[type="range"]::-webkit-slider-thumb:hover {
 
     <div class="demo-blur-wrap">
     <div class="demo-blur-overlay">
-      <div class="demo-blur-overlay-text">Графики и аналитика</div>
-      <div class="demo-blur-overlay-sub">Визуализация денежных потоков и динамика NPV за весь период</div>
-      <a href="#payment" class="demo-cta-btn">Получить полную версию</a>
+      
+      
+      
     </div>
     <div class="charts-row">
       <div class="chart-box">
@@ -843,8 +855,8 @@ input[type="range"]::-webkit-slider-thumb:hover {
 
     <div class="demo-blur-wrap">
     <div class="demo-blur-overlay">
-      <div class="demo-blur-overlay-text">Таблица денежных потоков</div>
-      <a href="#payment" class="demo-cta-btn">Получить полную версию</a>
+      
+      
     </div>
     <div class="chart-box" style="margin-top:14px;">
       <div class="chart-title">Денежный поток в разрезе по годам <em>тыс. ₽</em></div>
@@ -1724,5 +1736,22 @@ if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js');}
   } else { setTimeout(waitTwemoji,200); }
 })();
 </script>
+
+<div class="demo-cta-bar">
+  <div class="demo-cta-features">
+    <div class="demo-cta-title">В полной версии калькулятора:</div>
+    <ul class="demo-cta-list">
+      <li>Рентабельность собственного капитала</li>
+      <li>Чистый дисконтированный доход (NPV)</li>
+      <li>Индекс и срок окупаемости</li>
+      <li>Графики денежных потоков</li>
+      <li>Таблица доходов и расходов по годам</li>
+      <li>Сравнение нескольких вариантов</li>
+      <li>Учёт кредита, налогов и ремонта</li>
+    </ul>
+  </div>
+  <a href="#payment" class="demo-cta-btn">Получить полную версию</a>
+</div>
+
 </body>
 </html>
