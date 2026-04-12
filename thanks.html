@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Спасибо за покупку — Калькулятор инвестора</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Nunito+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--rose:#B11116;--rose-light:#C4647A;--rose-pale:#F5E8EA;--cream:#FDFAF8;--text:#2A1F22;--text-mid:#7A6670;--green:#3D8B6F;--white:#fff}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Nunito Sans',sans-serif;background:var(--cream);color:var(--text);line-height:1.7;min-height:100vh}
+
+.header{background:var(--white);border-bottom:3px solid var(--rose-pale);padding:28px 36px;text-align:center;box-shadow:0 2px 16px rgba(177,17,22,.06)}
+.brand-logo{width:56px;height:56px;background:linear-gradient(135deg,var(--rose),var(--rose-light));border-radius:14px;display:inline-flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:#fff;letter-spacing:1px;box-shadow:0 4px 16px rgba(177,17,22,.25);margin-bottom:12px}
+.header h1{font-family:'Playfair Display',serif;font-size:24px;font-weight:700;color:var(--rose);margin-bottom:4px}
+.header .subtitle{font-size:13px;color:var(--text-mid);letter-spacing:1.5px;text-transform:uppercase;font-weight:600}
+
+.container{max-width:640px;margin:0 auto;padding:32px 20px 60px}
+
+/* Success card */
+.success-card{background:var(--white);border-radius:20px;padding:40px 28px;text-align:center;box-shadow:0 6px 32px rgba(61,139,111,.12);border:2px solid #C8E6D8;margin-bottom:28px}
+.success-icon{width:72px;height:72px;background:linear-gradient(135deg,var(--green),#2E7D5E);border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:36px;color:#fff;box-shadow:0 4px 20px rgba(61,139,111,.3);margin-bottom:16px}
+.success-card h2{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--green);margin-bottom:8px}
+.success-card p{font-size:15px;color:var(--text-mid);max-width:420px;margin:0 auto}
+
+/* Action cards */
+.action-card{background:var(--white);border-radius:16px;padding:28px 24px;box-shadow:0 4px 24px rgba(177,17,22,.06);border:1.5px solid var(--rose-pale);margin-bottom:16px;text-align:center}
+.action-card .label{font-size:11px;color:var(--text-mid);letter-spacing:1.5px;text-transform:uppercase;font-weight:700;margin-bottom:12px}
+.action-card h3{font-family:'Playfair Display',serif;font-size:17px;font-weight:700;color:var(--text);margin-bottom:16px}
+
+.btn{display:inline-block;padding:16px 40px;font-family:'Nunito Sans',sans-serif;font-size:15px;font-weight:800;letter-spacing:.5px;text-decoration:none;border-radius:12px;cursor:pointer;transition:transform .2s,box-shadow .2s}
+.btn-primary{background:var(--rose);color:#fff;box-shadow:0 6px 24px rgba(177,17,22,.3)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(177,17,22,.4)}
+.btn-green{background:linear-gradient(135deg,var(--green),#2E7D5E);color:#fff;box-shadow:0 6px 24px rgba(61,139,111,.3)}
+.btn-green:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(61,139,111,.4)}
+
+.url-link{display:block;margin-top:12px;color:var(--rose);font-size:14px;font-weight:700;word-break:break-all}
+
+/* Install section */
+.install-section{background:var(--white);border-radius:16px;padding:28px 24px;box-shadow:0 2px 16px rgba(177,17,22,.05);border:1.5px solid var(--rose-pale);margin-bottom:16px}
+.install-section h3{font-family:'Playfair Display',serif;font-size:17px;font-weight:700;color:var(--rose);margin-bottom:16px;padding-bottom:10px;border-bottom:2px solid var(--rose-pale)}
+.platform-label{font-size:12px;font-weight:800;color:var(--text-mid);letter-spacing:1px;text-transform:uppercase;margin-bottom:2px}
+
+.step{display:flex;gap:12px;margin-bottom:14px;align-items:flex-start}
+.step-num{width:28px;height:28px;background:linear-gradient(135deg,var(--rose),var(--rose-light));color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:12px;flex-shrink:0;box-shadow:0 2px 6px rgba(177,17,22,.2)}
+.step-text{flex:1;font-size:13px;padding-top:3px}
+.step-text strong{color:var(--rose);font-weight:800}
+
+.note{background:var(--rose-pale);border-radius:10px;padding:12px 16px;margin-top:14px;font-size:12px;color:var(--text);line-height:1.6;border-left:4px solid var(--rose)}
+.note strong{color:var(--rose)}
+
+.divider{height:1px;background:var(--rose-pale);margin:18px 0}
+
+.tip{background:#E8F5EE;border-radius:12px;padding:16px 20px;margin-bottom:16px;font-size:14px;color:var(--text);border-left:4px solid var(--green);text-align:center}
+.tip strong{color:var(--green)}
+
+.footer{text-align:center;padding:24px 20px;font-size:12px;color:var(--text-mid);letter-spacing:.5px}
+.footer span{color:var(--rose);font-weight:700}
+
+@media(max-width:480px){
+  .header{padding:20px 16px}
+  .header h1{font-size:20px}
+  .container{padding:20px 14px 40px}
+  .success-card{padding:28px 16px}
+  .action-card,.install-section{padding:20px 16px}
+  .btn{padding:14px 28px;font-size:14px}
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="brand-logo">Д<sup>2</sup></div>
+  <h1>Калькулятор инвестора</h1>
+  <div class="subtitle">Деньги в Квадрате</div>
+</div>
+
+<div class="container">
+
+  <!-- Success -->
+  <div class="success-card">
+    <div class="success-icon">&#10003;</div>
+    <h2>Оплата прошла успешно!</h2>
+    <p>Спасибо за покупку. Ниже — ваш калькулятор и инструкция по установке на телефон.</p>
+  </div>
+
+  <!-- Open calculator -->
+  <div class="action-card">
+    <div class="label">Ваш калькулятор</div>
+    <h3>Откройте полную версию прямо сейчас</h3>
+    <a class="btn btn-primary" href="https://developer-calculator-site.vercel.app" target="_blank">Открыть калькулятор</a>
+    <a class="url-link" href="https://developer-calculator-site.vercel.app" target="_blank">developer-calculator-site.vercel.app</a>
+  </div>
+
+  <div class="tip">
+    <strong>Сохраните эту страницу в закладки</strong> — здесь всегда будет ссылка на ваш калькулятор и инструкция по установке.
+  </div>
+
+  <!-- Install instructions -->
+  <div class="install-section">
+    <h3>Установите как приложение на телефон</h3>
+
+    <div class="platform-label">Android (Chrome)</div>
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-text">Откройте ссылку выше в <strong>Google Chrome</strong>.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-text">Нажмите <strong>три точки</strong> (меню) в правом верхнем углу.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-text">Выберите <strong>«Установить приложение»</strong> или <strong>«Добавить на главный экран»</strong>.</div>
+    </div>
+    <div class="note">
+      <strong>Важно:</strong> используйте именно <strong>Google Chrome</strong>.
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="platform-label">iPhone / iPad (Safari)</div>
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-text">Откройте ссылку в <strong>Safari</strong> (именно Safari, не Chrome).</div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-text">Нажмите кнопку <strong>«Поделиться»</strong> (квадрат со стрелкой вверх) внизу экрана.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-text">Выберите <strong>«На экран Домой»</strong> → <strong>«Добавить»</strong>.</div>
+    </div>
+    <div class="note">
+      <strong>Важно:</strong> на iPhone установка только через <strong>Safari</strong>.
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="platform-label">Компьютер (Chrome / Edge)</div>
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-text">Откройте ссылку в <strong>Chrome</strong> или <strong>Edge</strong>.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-text">В адресной строке нажмите иконку <strong>«Установить»</strong> или через меню: <strong>три точки → Установить приложение</strong>.</div>
+    </div>
+  </div>
+
+  <div class="tip">
+    <strong>Работает офлайн</strong> — после первого открытия калькулятор доступен без интернета.
+  </div>
+
+</div>
+
+<div class="footer">
+  <span>Деньги в Квадрате</span> — Калькулятор инвестора в недвижимость<br>
+  Наталья Девяткова &middot; CCIM &middot; Forbes Women &middot; ГК Денова
+</div>
+
+</body>
+</html>
