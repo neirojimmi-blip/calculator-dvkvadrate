@@ -3,143 +3,288 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Инструкция — Калькулятор инвестора</title>
+<title>Установка — Калькулятор инвестора</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Nunito+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
+:root {
+  --rose: #B11116;
+  --rose-light: #C4647A;
+  --rose-pale: #F5E8EA;
+  --cream: #FDFAF8;
+  --text: #2A1F22;
+  --text-mid: #7A6670;
+  --green: #3D8B6F;
+  --white: #FFFFFF;
+}
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:'Segoe UI','Helvetica Neue',Arial,sans-serif;background:#FAFAFA;color:#1a1a1a;line-height:1.7;padding:40px 20px;}
-.container{max-width:680px;margin:0 auto;}
-h1{font-size:26px;color:#B11116;margin-bottom:8px;font-weight:700;}
-.subtitle{font-size:14px;color:#69727D;margin-bottom:36px;}
-h2{font-size:18px;color:#B11116;margin:32px 0 12px;padding-bottom:8px;border-bottom:2px solid #F5DEDE;}
-.step{display:flex;gap:16px;margin-bottom:20px;align-items:flex-start;}
-.step-num{width:36px;height:36px;background:#B11116;color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px;flex-shrink:0;}
-.step-text{flex:1;font-size:15px;padding-top:6px;}
-.step-text strong{color:#B11116;}
-.note{background:#FFF3F4;border:1.5px solid #EBA0A8;border-radius:10px;padding:16px 20px;margin:20px 0;font-size:14px;color:#8B1A1A;line-height:1.6;}
-.note-title{font-weight:700;margin-bottom:4px;}
-.url-box{background:#fff;border:2px solid #B11116;border-radius:10px;padding:16px 20px;margin:20px 0;text-align:center;}
-.url-box a{color:#B11116;font-size:16px;font-weight:700;text-decoration:none;word-break:break-all;}
-.url-box a:hover{text-decoration:underline;}
-.url-label{font-size:12px;color:#69727D;margin-bottom:6px;text-transform:uppercase;letter-spacing:1px;font-weight:600;}
-.divider{height:1px;background:#E0E3E6;margin:36px 0;}
-.footer{text-align:center;font-size:12px;color:#9BA3AB;margin-top:40px;}
-.qr-section{text-align:center;margin:24px 0 10px;}
-.qr-section img{width:220px;height:220px;}
-.qr-caption{font-size:13px;color:#69727D;margin-top:8px;font-weight:600;}
+body{
+  font-family:'Nunito Sans',sans-serif;
+  background:var(--cream);
+  color:var(--text);
+  line-height:1.7;
+  min-height:100vh;
+}
+
+/* Header */
+.header{
+  background:var(--white);
+  border-bottom:3px solid var(--rose-pale);
+  padding:28px 36px;
+  text-align:center;
+  box-shadow:0 2px 16px rgba(177,17,22,0.06);
+}
+.brand-logo{
+  width:56px;height:56px;
+  background:linear-gradient(135deg,var(--rose),var(--rose-light));
+  border-radius:14px;
+  display:inline-flex;align-items:center;justify-content:center;
+  font-family:'Playfair Display',serif;
+  font-size:20px;font-weight:700;color:#fff;letter-spacing:1px;
+  box-shadow:0 4px 16px rgba(177,17,22,0.25);
+  margin-bottom:12px;
+}
+.header h1{
+  font-family:'Playfair Display',serif;
+  font-size:24px;font-weight:700;color:var(--rose);
+  margin-bottom:4px;
+}
+.header .subtitle{
+  font-size:13px;color:var(--text-mid);
+  letter-spacing:1.5px;text-transform:uppercase;font-weight:600;
+}
+
+/* Container */
+.container{max-width:640px;margin:0 auto;padding:32px 20px 60px;}
+
+/* QR Section */
+.qr-card{
+  background:var(--white);
+  border-radius:16px;
+  padding:32px 24px;
+  text-align:center;
+  box-shadow:0 4px 24px rgba(177,17,22,0.08);
+  border:1.5px solid var(--rose-pale);
+  margin-bottom:32px;
+}
+.qr-card img{
+  width:200px;height:200px;
+  border-radius:12px;
+  box-shadow:0 2px 12px rgba(0,0,0,0.08);
+}
+.qr-label{
+  font-size:14px;font-weight:700;color:var(--text-mid);
+  margin-top:14px;margin-bottom:16px;
+}
+.url-btn{
+  display:inline-block;
+  padding:14px 36px;
+  background:var(--rose);color:#fff;
+  font-family:'Nunito Sans',sans-serif;
+  font-size:14px;font-weight:800;
+  letter-spacing:0.5px;
+  text-decoration:none;
+  border-radius:12px;
+  box-shadow:0 4px 16px rgba(177,17,22,0.3);
+  transition:transform 0.2s,box-shadow 0.2s;
+}
+.url-btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 6px 24px rgba(177,17,22,0.4);
+}
+
+/* Section */
+.section{
+  background:var(--white);
+  border-radius:16px;
+  padding:28px 24px;
+  box-shadow:0 2px 16px rgba(177,17,22,0.05);
+  border:1.5px solid var(--rose-pale);
+  margin-bottom:20px;
+}
+.section-icon{
+  font-size:28px;margin-bottom:4px;
+}
+.section h2{
+  font-family:'Playfair Display',serif;
+  font-size:18px;font-weight:700;color:var(--rose);
+  margin-bottom:20px;
+  padding-bottom:10px;
+  border-bottom:2px solid var(--rose-pale);
+}
+
+/* Steps */
+.step{display:flex;gap:14px;margin-bottom:16px;align-items:flex-start;}
+.step-num{
+  width:32px;height:32px;
+  background:linear-gradient(135deg,var(--rose),var(--rose-light));
+  color:#fff;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-weight:800;font-size:14px;flex-shrink:0;
+  box-shadow:0 2px 8px rgba(177,17,22,0.2);
+}
+.step-text{flex:1;font-size:14px;padding-top:4px;}
+.step-text strong{color:var(--rose);font-weight:800;}
+
+/* Note */
+.note{
+  background:var(--rose-pale);
+  border-radius:10px;
+  padding:14px 18px;
+  margin-top:16px;
+  font-size:13px;
+  color:var(--text);
+  line-height:1.6;
+  border-left:4px solid var(--rose);
+}
+.note strong{color:var(--rose);}
+
+/* Tip */
+.tip{
+  background:#E8F5EE;
+  border-radius:10px;
+  padding:14px 18px;
+  margin-top:20px;
+  font-size:13px;
+  color:var(--text);
+  border-left:4px solid var(--green);
+}
+.tip strong{color:var(--green);}
+
+/* Footer */
+.footer{
+  text-align:center;
+  padding:24px 20px;
+  font-size:12px;
+  color:var(--text-mid);
+  letter-spacing:0.5px;
+}
+.footer span{color:var(--rose);font-weight:700;}
+
+@media(max-width:480px){
+  .header{padding:20px 16px;}
+  .header h1{font-size:20px;}
+  .container{padding:20px 14px 40px;}
+  .section{padding:20px 16px;}
+  .qr-card{padding:24px 16px;}
+  .qr-card img{width:160px;height:160px;}
+}
 </style>
 </head>
 <body>
+
+<div class="header">
+  <div class="brand-logo">Д<sup>2</sup></div>
+  <h1>Калькулятор инвестора</h1>
+  <div class="subtitle">Деньги в Квадрате</div>
+</div>
+
 <div class="container">
 
-<h1>Калькулятор инвестора — Деньги в Квадрате</h1>
-<p class="subtitle">Инструкция по установке приложения на телефон</p>
+  <div class="qr-card">
+    <img src="qr-code.png" alt="QR-код для установки">
+    <div class="qr-label">Отсканируйте камерой телефона</div>
+    <a class="url-btn" href="https://developer-calculator-site.vercel.app" target="_blank">Открыть калькулятор</a>
+  </div>
 
-<div class="qr-section">
-  <img src="qr-code.png" alt="QR-код" style="width:220px;height:220px;">
-  <div class="qr-caption">Отсканируйте камерой телефона</div>
-</div>
+  <!-- ANDROID -->
+  <div class="section">
+    <div class="section-icon">Android</div>
+    <h2>Установка на Android</h2>
 
-<div class="url-box">
-  <div class="url-label">Или перейдите по ссылке</div>
-  <a href="https://developer-calculator-site.vercel.app" target="_blank">developer-calculator-site.vercel.app</a>
-</div>
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-text">Откройте <strong>Google Chrome</strong> на телефоне.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-text">Отсканируйте QR-код камерой или нажмите кнопку <strong>«Открыть калькулятор»</strong> выше.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-text">Дождитесь полной загрузки страницы.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-text">Нажмите на <strong>три точки</strong> (меню) в правом верхнем углу браузера.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">5</div>
+      <div class="step-text">Выберите <strong>«Установить приложение»</strong> или <strong>«Добавить на главный экран»</strong>.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">6</div>
+      <div class="step-text">Нажмите <strong>«Установить»</strong> — иконка калькулятора появится на главном экране.</div>
+    </div>
 
-<h2>Android (Chrome)</h2>
+    <div class="note">
+      <strong>Важно:</strong> используйте именно <strong>Google Chrome</strong>. В Samsung Internet или Яндекс Браузере эта функция может работать иначе.
+    </div>
+  </div>
 
-<div class="step">
-  <div class="step-num">1</div>
-  <div class="step-text">Откройте <strong>Google Chrome</strong> на телефоне.</div>
-</div>
-<div class="step">
-  <div class="step-num">2</div>
-  <div class="step-text">Отсканируйте QR-код камерой или перейдите по ссылке выше.</div>
-</div>
-<div class="step">
-  <div class="step-num">3</div>
-  <div class="step-text">Дождитесь полной загрузки страницы калькулятора.</div>
-</div>
-<div class="step">
-  <div class="step-num">4</div>
-  <div class="step-text">Нажмите на <strong>три точки</strong> (меню) в правом верхнем углу Chrome.</div>
-</div>
-<div class="step">
-  <div class="step-num">5</div>
-  <div class="step-text">Выберите <strong>«Добавить на главный экран»</strong> (или <strong>«Установить приложение»</strong>).</div>
-</div>
-<div class="step">
-  <div class="step-num">6</div>
-  <div class="step-text">Подтвердите — нажмите <strong>«Добавить»</strong>.</div>
-</div>
-<div class="step">
-  <div class="step-num">7</div>
-  <div class="step-text">На главном экране появится иконка <strong>«Калькулятор»</strong>. Запускайте как обычное приложение!</div>
-</div>
+  <!-- IPHONE -->
+  <div class="section">
+    <div class="section-icon">iPhone / iPad</div>
+    <h2>Установка на iPhone и iPad</h2>
 
-<div class="note">
-  <div class="note-title">Важно</div>
-  Используйте именно <strong>Google Chrome</strong>. В других браузерах (Samsung Internet, Яндекс Браузер) пункт «Добавить на главный экран» может называться иначе или отсутствовать.
-</div>
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-text">Откройте <strong>Safari</strong> (именно Safari, не Chrome).</div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-text">Отсканируйте QR-код камерой или перейдите по ссылке выше.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-text">Дождитесь полной загрузки страницы калькулятора.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-text">Нажмите кнопку <strong>«Поделиться»</strong> (квадрат со стрелкой вверх) внизу экрана.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">5</div>
+      <div class="step-text">Прокрутите список вниз и выберите <strong>«На экран Домой»</strong>.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">6</div>
+      <div class="step-text">Нажмите <strong>«Добавить»</strong> в правом верхнем углу. Готово!</div>
+    </div>
 
-<div class="divider"></div>
+    <div class="note">
+      <strong>Важно:</strong> на iPhone добавить приложение на экран можно <strong>только через Safari</strong>. Chrome на iOS эту функцию не поддерживает.
+    </div>
+  </div>
 
-<h2>iPhone / iPad (Safari)</h2>
+  <!-- COMPUTER -->
+  <div class="section">
+    <div class="section-icon">Компьютер</div>
+    <h2>Установка на компьютер</h2>
 
-<div class="step">
-  <div class="step-num">1</div>
-  <div class="step-text">Откройте <strong>Safari</strong> (именно Safari, не Chrome).</div>
-</div>
-<div class="step">
-  <div class="step-num">2</div>
-  <div class="step-text">Отсканируйте QR-код камерой или перейдите по ссылке выше.</div>
-</div>
-<div class="step">
-  <div class="step-num">3</div>
-  <div class="step-text">Дождитесь полной загрузки страницы калькулятора.</div>
-</div>
-<div class="step">
-  <div class="step-num">4</div>
-  <div class="step-text">Нажмите кнопку <strong>«Поделиться»</strong> (квадрат со стрелкой вверх) внизу экрана.</div>
-</div>
-<div class="step">
-  <div class="step-num">5</div>
-  <div class="step-text">Прокрутите вниз и выберите <strong>«На экран «Домой»»</strong>.</div>
-</div>
-<div class="step">
-  <div class="step-num">6</div>
-  <div class="step-text">Нажмите <strong>«Добавить»</strong> в правом верхнем углу.</div>
-</div>
-<div class="step">
-  <div class="step-num">7</div>
-  <div class="step-text">Иконка калькулятора появится на главном экране. Готово!</div>
-</div>
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-text">Откройте <strong>Google Chrome</strong> или <strong>Microsoft Edge</strong>.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-text">Перейдите по ссылке выше.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-text">В адресной строке справа нажмите иконку <strong>«Установить»</strong> (монитор с плюсом), или через меню: <strong>три точки → Установить приложение</strong>.</div>
+    </div>
+  </div>
 
-<div class="note">
-  <div class="note-title">Важно</div>
-  На iPhone/iPad приложение можно добавить на экран только через <strong>Safari</strong>. Chrome на iOS не поддерживает эту функцию.
-</div>
+  <div class="tip">
+    <strong>Калькулятор работает офлайн</strong> — после первого открытия он сохраняется на вашем устройстве и доступен без интернета.
+  </div>
 
-<div class="divider"></div>
-
-<h2>Компьютер (Windows / Mac)</h2>
-
-<div class="step">
-  <div class="step-num">1</div>
-  <div class="step-text">Откройте <strong>Google Chrome</strong> или <strong>Microsoft Edge</strong>.</div>
-</div>
-<div class="step">
-  <div class="step-num">2</div>
-  <div class="step-text">Перейдите по ссылке выше.</div>
-</div>
-<div class="step">
-  <div class="step-num">3</div>
-  <div class="step-text">В адресной строке справа нажмите иконку <strong>«Установить»</strong> (монитор с плюсом) или через меню: <strong>три точки → «Установить приложение»</strong>.</div>
 </div>
 
 <div class="footer">
-  Калькулятор инвестора — Деньги в Квадрате<br>
-  Работает офлайн после первого открытия
+  <span>Деньги в Квадрате</span> — Калькулятор инвестора в недвижимость<br>
+  Наталья Девяткова &middot; CCIM &middot; Forbes Women &middot; ГК Денова
 </div>
 
-</div>
 </body>
 </html>
