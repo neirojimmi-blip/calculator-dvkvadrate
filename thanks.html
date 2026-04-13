@@ -81,13 +81,18 @@ body{font-family:'Nunito Sans',sans-serif;background:var(--cream);color:var(--te
   <div class="success-card">
     <div class="success-icon">&#10003;</div>
     <h2>Оплата прошла успешно!</h2>
-    <p>Спасибо за покупку. Ниже — ваш калькулятор и инструкция по установке на телефон.</p>
+    <p>Спасибо за покупку. Через <strong><span id="countdown">5</span> сек.</strong> вы будете перенаправлены в полную версию калькулятора.</p>
+    <div style="margin-top:16px;">
+      <div style="width:100%;height:6px;background:var(--rose-pale);border-radius:3px;overflow:hidden;">
+        <div id="progress-bar" style="width:0%;height:100%;background:var(--green);border-radius:3px;transition:width 1s linear;"></div>
+      </div>
+    </div>
   </div>
 
   <!-- Open calculator -->
   <div class="action-card">
     <div class="label">Ваш калькулятор</div>
-    <h3>Откройте полную версию прямо сейчас</h3>
+    <h3>Или откройте прямо сейчас</h3>
     <a class="btn btn-primary" href="https://developer-calculator-site.vercel.app" target="_blank">Открыть калькулятор</a>
     <a class="url-link" href="https://developer-calculator-site.vercel.app" target="_blank">developer-calculator-site.vercel.app</a>
   </div>
@@ -160,5 +165,22 @@ body{font-family:'Nunito Sans',sans-serif;background:var(--cream);color:var(--te
   Наталья Девяткова &middot; CCIM &middot; Forbes Women &middot; ГК Денова
 </div>
 
+<script>
+(function(){
+  var seconds = 5;
+  var el = document.getElementById('countdown');
+  var bar = document.getElementById('progress-bar');
+  bar.style.width = '0%';
+  var timer = setInterval(function(){
+    seconds--;
+    if(el) el.textContent = seconds;
+    bar.style.width = ((5 - seconds) / 5 * 100) + '%';
+    if(seconds <= 0){
+      clearInterval(timer);
+      window.location.href = 'https://developer-calculator-site.vercel.app';
+    }
+  }, 1000);
+})();
+</script>
 </body>
 </html>
