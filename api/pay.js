@@ -39,8 +39,8 @@ export default async function handler(req, res) {
     const data = await response.json();
 
     if (!response.ok) {
-      console.error('YooKassa error:', data);
-      return res.status(500).json({ error: 'Payment creation failed' });
+      console.error('YooKassa error:', JSON.stringify(data));
+      return res.status(response.status).json({ error: 'Payment creation failed', details: data });
     }
 
     const redirectUrl = data.confirmation && data.confirmation.confirmation_url;
