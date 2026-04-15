@@ -22,8 +22,32 @@ export default async function handler(req, res) {
       return_url: 'https://developer-calculator-site.vercel.app/thanks.html'
     },
     capture: true,
-    description: 'Калькулятор инвестора — Деньги в Квадрате (полная версия)'
+    description: 'Калькулятор инвестора — Деньги в Квадрате (полная версия)',
+    receipt: {
+      customer: {
+        email: 'customer@example.com'
+      },
+      items: [
+        {
+          description: 'Калькулятор инвестора — полная версия',
+          quantity: '1.00',
+          amount: {
+            value: '4990.00',
+            currency: 'RUB'
+          },
+          vat_code: 1,
+          payment_mode: 'full_payment',
+          payment_subject: 'service'
+        }
+      ]
+    }
   };
+
+  // If email passed as query param, use it
+  const email = req.query && req.query.email;
+  if (email) {
+    payload.receipt.customer.email = email;
+  }
 
   try {
     const response = await fetch('https://api.yookassa.ru/v3/payments', {
